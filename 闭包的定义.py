@@ -19,3 +19,32 @@ def father():
 
 res = father()
 res('变量')
+
+"""
+闭包可以替代简单的类,可以减少内存的开销
+"""
+
+
+# 原版
+class Animal(object):
+    def __init__(self, name):
+        self.name = name
+
+    def say(self, voice):
+        print('{}的叫声是{}'.format(self.name, voice))
+
+
+dog = Animal('狗')
+dog.say('汪')
+
+
+# 闭包改良后
+def ani(name):
+    def voi(vo):
+        print('{}的叫声是{}'.format(name, vo))
+
+    return voi
+
+
+cat = ani("猫")
+cat('喵')
